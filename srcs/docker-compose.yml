@@ -40,8 +40,8 @@ wordpress:
   build: 
   context: requirements/wordpress
   dockerfile: Dockerfile
-  depends_on:    					# WordPress démarrera uniquement après MariaDB (sinon il ne pourra pas configurer la base de données...)
-                                                        - mariadb
+  depends_on:
+    - mariadb
   restart: on-failure
   expose: 
-                                                        - "9000"
+    - "9000"

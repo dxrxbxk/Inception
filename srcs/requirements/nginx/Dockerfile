@@ -12,5 +12,6 @@ RUN	chown -R www-data:www-data /var/www/html
 
 COPY	conf/nginx.conf /etc/nginx/conf.d/
 
-ENTRYPOINT	["nginx", "-g", "daemon off;"]
+COPY	tools/index.html /var/www/html/
 
+CMD	["nginx", "-g", "daemon off;"]

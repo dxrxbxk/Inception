@@ -9,6 +9,7 @@ COPY	tools/setup.sh /tmp/setup.sh
 COPY	tools/init.sql /tmp/init.sql
 
 COPY	tools/.env /tmp/.env
+## delete this
 
-#ENTRYPOINT ["sh", "/tmp/setup.sh"]
+CMD	["sh", "/tmp/setup.sh"]
 
