@@ -1,14 +1,15 @@
 #!bin/bash
 
 if [ ! -e "/var/www/wordpress/wp-config.php" ]; then
-	sleep 10
+	##sleep 10
 
-	wp core download --path=/var/www/wordpress --allow-root
+	echo "Starting WP download..."
+##	wp core download --path=/var/www/wordpress --allow-root
 
-	wp config create --path=/var/www/wordpress --dbname=wordpress --dbuser=$SQL_USER --dbpass=$SQL_USER_PASSWORD --dbhost=mariadb --allow-root
+	wp config create --path=/var/www/wordpress --dbname=wordpress --dbuser=$SQL_USER --dbpass=$SQL_PASSWORD --dbhost=mariadb --allow-root
 
 
-	wp core install --path=/var/www/wordpress --url="diroyer.42.fr" --title="elephant de grabouilli" --admin_user=$SQL_USER --admin_password=$SQL_USER_PASSWORD --admin_email=elon.musk@yahoo.fr --allow-root
+	wp core install --path=/var/www/wordpress --url="diroyer.42.fr" --title="elephant de grabouilli" --admin_user=$SQL_USER --admin_password=$SQL_PASSWORD --admin_email=elon.musk@yahoo.fr --allow-root
 
 	wp user create --path=/var/www/wordpress thomas thomas@exemple.com --user_pass=pass --role=editor --allow-root
 

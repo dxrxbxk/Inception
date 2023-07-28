@@ -15,6 +15,8 @@ COPY	tools/init.sql /tmp/init.sql
 
 RUN     chown -R mysql:mysql /tmp/
 
+RUN	chown -R root /var/www/wordpress
+
 USER	mysql
 
 ENTRYPOINT	["sh", "/tmp/setup.sh"]
