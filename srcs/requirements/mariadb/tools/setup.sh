@@ -18,7 +18,5 @@ then
 		-e "s/SQL_ROOT_PASSWORD/$SQL_ROOT_PASSWORD/g" > "$tmpfile"
 
 	mysqld_safe --init-file="$tmpfile"
-	chmod 777 /var/run/mysqld/mysqld.sock ##delete this ?
-	#mysqld_safe
 	rm "$tmpfile"
 fi

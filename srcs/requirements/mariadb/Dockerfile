@@ -15,7 +15,10 @@ COPY	tools/init.sql /tmp/init.sql
 
 RUN     chown -R mysql:mysql /tmp/
 
-RUN	chown -R root /var/www/wordpress
+RUN	mkdir -p /run/mysqld
+RUN	chown -R mysql:mysql /run/mysqld
+
+##RUN	chown -R root:root /var/www/wordpress
 
 USER	mysql
 

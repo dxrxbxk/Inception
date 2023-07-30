@@ -8,13 +8,14 @@ RUN	openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/ngin
 
 ##RUN	chmod 755 /var/www/html
 
-
 RUN	rm -f /etc/nginx/sites-enabled/default
 
 RUN	ln -s /etc/nginx/conf.d/nginx.conf /etc/nginx/sites-enabled/
 
 COPY	conf/nginx.conf /etc/nginx/conf.d/
 
-RUN	chown -R root /var/www/html
+RUN	chmod 755 /var/www/html
+
+RUN	chown -R www-data:www-data /var/www/html
 
 CMD	["nginx", "-g", "daemon off;"]
