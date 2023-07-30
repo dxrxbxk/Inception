@@ -59,11 +59,11 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/diroyer/data/database
+      device: /home/diroyer/data/DB/
       o: bind
   wordpress_volume:
     driver: local
     driver_opts:
       type: none
-      device: /home/diroyer/data/site
+      device: /home/diroyer/data/WordPress/
       o: bind
