@@ -18,9 +18,7 @@ COPY	conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 COPY	tools/setup.sh /root/utils/setup.sh
 
-WORKDIR	/root/utils
-
-CMD	[ "sh" , "/root/utils/setup.sh" ]
+ENTRYPOINT	[ "sh" , "/root/utils/setup.sh" ]
 
 ##CMD	["php", "-S", "0.0.0.0:9000", "-t", "/var/www/wordpress"]
 

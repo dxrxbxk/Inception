@@ -4,7 +4,7 @@ define check_file_existence
 	else \
 		mkdir -vp '$(1)'; \
 		if [ "$(2)" ]; then \
-			chmod '$(2)' '$(1)'; \
-		fi
+			sudo chmod -R '$(2)' '$(1)'; \
+		fi \
 	fi
 endef

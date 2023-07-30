@@ -12,7 +12,7 @@ RUN	rm -f /etc/nginx/sites-enabled/default
 
 RUN	ln -s /etc/nginx/conf.d/nginx.conf /etc/nginx/sites-enabled/
 
-COPY	conf/nginx.conf /etc/nginx/conf.d/
+COPY	conf/nginx.conf /etc/nginx/
 
 RUN	chmod 755 /var/www/html
 

@@ -2,8 +2,6 @@
 
 if [ ! -e "/var/www/wordpress/wp-config.php" ]
 then
-	##sleep 10
-
 	echo "Starting WP download..."
 
 	wp config create --path=/var/www/wordpress --dbname=wordpress --dbuser=$SQL_USER --dbpass=$SQL_PASSWORD --dbhost=mariadb --allow-root
@@ -15,8 +13,7 @@ then
 	wp user create --path=/var/www/wordpress Eliot eliot@ecorp.com --user_pass=pass --role=editor --allow-root
 
 else
-	sleep 3
-	echo Wordpress already installed, installation step skipped
+	echo "wp-config.php found, exiting WP setup script..."
 fi
 
 ##/usr/sbin/php-fpm7.3 -F

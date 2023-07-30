@@ -19,4 +19,8 @@ then
 
 	mysqld_safe --init-file="$tmpfile"
 	rm "$tmpfile"
+else
+	echo "SQL_DATABASE found, exiting mariadb setup script..."
 fi
+
+exec mysqld_safe
