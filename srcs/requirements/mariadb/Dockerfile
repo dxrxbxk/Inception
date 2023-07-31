@@ -22,5 +22,5 @@ RUN	chown -R mysql:mysql /run/mysqld
 
 USER	mysql
 
-ENTRYPOINT	["sh", "/tmp/setup.sh"]
+##ENTRYPOINT	["sh", "/tmp/setup.sh"]
 
