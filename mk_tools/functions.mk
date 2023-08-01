@@ -18,3 +18,13 @@ define clean_volumes
     fi
 
 endef
+
+define wait_for_fpm
+	@tmpfile=$$(mktemp); \
+	docker logs -f wordpress > $$tmpfile & \
+	docker_logs_pid=$$!; \
+	while ! grep -q "Lauching PHP-FPM..." $$tmpfile; do \
+		sleep 1; \
+	done; \
+	kill "$$docker_logs_pid";
+endef

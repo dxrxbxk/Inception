@@ -7,6 +7,8 @@ start: mdir stop
 
 detach: mdir stop
 	docker compose --file ./srcs/docker-compose.yml up --detach
+	$(call wait_for_fpm)
+	@echo "Done."
 
 build:
 	docker compose --file ./srcs/docker-compose.yml build

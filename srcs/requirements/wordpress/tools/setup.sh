@@ -4,7 +4,6 @@ if [ ! -e "/var/www/wordpress/wp-config.php" ]
 then
 	echo "Starting WP download..."
 
-
 	while [ ! nc -zv mariadb.srcs_inception 3306 2>&1 | grep -q 'open'] 
 	do
 		echo "Waiting for mariadb..."
@@ -12,6 +11,13 @@ then
 	done
 
 	echo "Connexion to mariadb established..."
+
+	mkdir -p /var/www/wordpress
+
+	chown -R root:root /var/www/wordpress
+
+	wp core download --path=/var/www/wordpress --allow-root
+	
 
 	wp config create --path=/var/www/wordpress --dbname=wordpress --dbuser=$SQL_USER --dbpass=$SQL_PASSWORD --dbhost=mariadb --allow-root
 
@@ -21,10 +27,9 @@ then
 
 	wp user create --path=/var/www/wordpress $WP_USER $WP_MAIL --user_pass=$WP_PASSWORD --role=subscriber --allow-root
 
-	echo "WP setup done, launching PHP-FPM..."
-
 else
-	echo "wp-config.php found, exiting WP setup script..."
+	echo "wp-config.php found..."
 fi
 
-exec php-fpm7.3 -F -R 
+echo "Lauching PHP-FPM..."
+exec "$@"
