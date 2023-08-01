@@ -16,7 +16,6 @@ then
 		-e "s/SQL_USER/$SQL_USER/g" \
 		-e "s/SQL_PASSWORD/$SQL_PASSWORD/g" \
 		-e "s/SQL_ROOT_PASSWORD/$SQL_ROOT_PASSWORD/g" > "$tmpfile"
-	cat $tmpfile
 else
 	echo "SQL_DATABASE found, exiting mariadb setup script..."
 fi

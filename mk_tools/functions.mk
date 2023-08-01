@@ -8,3 +8,13 @@ define check_file_existence
 		fi \
 	fi
 endef
+
+define clean_volumes
+    @volumes=$$(docker volume ls -q); \
+    if [ -n "$$volumes" ]; then \
+        for volume in $$volumes; do \
+            docker volume rm "$$volume"; \
+        done; \
+    fi
+
+endef

@@ -1,11 +1,11 @@
 include mk_tools/functions.mk
 
-all: mdir build detach
+all: build detach
 
-start: stop
+start: mdir stop
 	docker compose --file ./srcs/docker-compose.yml up
 
-detach: stop
+detach: mdir stop
 	docker compose --file ./srcs/docker-compose.yml up --detach
 
 build:
@@ -21,7 +21,7 @@ mdir:
 clean: stop
 	docker system prune -af
 	docker volume prune -af
-	docker volume rm $$(docker volume ls -q)
+	$(call clean_volumes)
 
 fclean: clean
 	sudo rm -rf /home/diroyer/data/WordPress
