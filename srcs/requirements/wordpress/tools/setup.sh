@@ -12,20 +12,15 @@ then
 
 	echo "Connexion to mariadb established..."
 
-	mkdir -p /var/www/wordpress
+	wp core download --path=/var/www/wordpress 
 
-	chown -R root:root /var/www/wordpress
-
-	wp core download --path=/var/www/wordpress --allow-root
-	
-
-	wp config create --path=/var/www/wordpress --dbname=wordpress --dbuser=$SQL_USER --dbpass=$SQL_PASSWORD --dbhost=mariadb --allow-root
+	wp config create --path=/var/www/wordpress --dbname=wordpress --dbuser=$SQL_USER --dbpass=$SQL_PASSWORD --dbhost=mariadb 
 
 	wp core install --path=/var/www/wordpress --url="diroyer.42.fr" --title="Inception" \
 		--admin_user=$SQL_USER --admin_password=$SQL_PASSWORD \
-		--admin_email=$ADMIN_MAIL --allow-root
+		--admin_email=$ADMIN_MAIL 
 
-	wp user create --path=/var/www/wordpress $WP_USER $WP_MAIL --user_pass=$WP_PASSWORD --role=subscriber --allow-root
+	wp user create --path=/var/www/wordpress $WP_USER $WP_MAIL --user_pass=$WP_PASSWORD --role=subscriber 
 
 else
 	echo "wp-config.php found..."

@@ -1,9 +1,10 @@
 version: '3'
-
+name: inception
 services:
   mariadb:
     container_name: mariadb
     image: mariadb
+    hostname: mariadb.diroyer.42.fr
     networks:
       - inception
     volumes:
@@ -19,6 +20,7 @@ services:
   nginx:
     container_name: nginx
     image: nginx
+    hostname: nginx.diroyer.42.fr
     networks:
       - inception
     volumes:
@@ -36,6 +38,7 @@ services:
   wordpress:
     container_name: wordpress
     image: wordpress
+    hostname: wordpress.diroyer.42.fr
     volumes:
       - wordpress_volume:/var/www/wordpress
     networks:
